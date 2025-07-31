@@ -1,0 +1,431 @@
+@font-face {
+  font-family: 'Gilroy';
+  src: url('assets/fonts/Gilroy-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('assets/fonts/Gilroy-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('assets/fonts/Gilroy-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Agency FB';
+  src: url('assets/fonts/AGENCYB.TTF') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body, html {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#hud-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+.hud-frame {
+  position: absolute;
+  width: 9.84vw;
+  height: 20.19vh;
+  right: 1.04vw;
+  top: 3.7vh;
+  transform: scale(var(--hud-scale, 1));
+  transform-origin: top right;
+}
+
+.hud-bg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: -15.63vw;
+  top: 0;
+  background-size: cover;
+}
+
+.hud-rectangle.frame-bg {
+  position: absolute;
+  width: 9.22vw;
+  height: 5.19vh;
+  left: 0;
+  top: 0;
+  background: rgba(20, 20, 20, 0.30);
+  border-radius: 0.21vw 2.78vh 2.78vh 0.21vw;
+  z-index: 0;
+}
+
+.hud-rectangle.header-bg {
+  position: absolute;
+  width: 8.91vw;
+  height: 4.63vh;
+  left: 0.16vw;
+  top: 0.28vh;
+  background: radial-gradient(95.91% 262.65% at 0.88% 6%, rgba(0, 0, 0, 0.34) 0%, rgba(38, 25, 50, 0.68) 56.21%, rgba(91, 58, 104, 0.91) 66.45%, rgba(147, 69, 161, 0.59) 100%);
+  border-radius: 0.16vw 18.52vh 18.52vh 0.16vw;
+  z-index: 2;
+}
+
+.hud-text.money1, .hud-text.money2, .hud-text.money3 {
+  position: absolute;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.73vw;
+  line-height: 3.24vh;
+  color: #FFFFFF;
+  text-align: right;
+  padding-right: 0.83vw;
+  z-index: 10;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.hud-text.money1 { top: 6.94vh; }
+.hud-text.money2 { top: 10.93vh; }
+.hud-text.money3 { top: 15.37vh; }
+
+.hud-rectangle.money-main-1, .hud-rectangle.money-main-2, .hud-rectangle.money-main-3 {
+  position: absolute;
+  height: 3.24vh;
+  border-radius: 3.24vh 18.52vh 18.52vh 3.24vh;
+  background: radial-gradient(95.91% 262.65% at 0.88% 6%, rgba(0, 0, 0, 0.58) 0%, rgba(38, 25, 50, 0.68) 56.21%, rgba(91, 58, 104, 0.91) 66.45%, rgba(147, 69, 161, 0.59) 100%);
+  z-index: 1;
+}
+
+.hud-rectangle.money-main-1 { top: 6.94vh; }
+.hud-rectangle.money-main-2 { top: 10.65vh; }
+.hud-rectangle.money-main-3 { top: 15.09vh; }
+
+.hud-rectangle.money-bg-1, .hud-rectangle.money-bg-2, .hud-rectangle.money-bg-3 {
+  position: absolute;
+  height: 3.7vh;
+  background: rgba(20, 20, 20, 0.30);
+  z-index: 0;
+}
+
+.hud-rectangle.money-bg-1 {
+  top: 6.67vh;
+  border-radius: 1.39vh 2.78vh 2.78vh 1.39vh;
+}
+
+.hud-rectangle.money-bg-2 {
+  top: 10.65vh;
+  border-radius: 1.2vh 2.78vh 2.78vh 1.2vh;
+}
+
+.hud-rectangle.money-bg-3 {
+  top: 15.09vh;
+  border-radius: 0.93vh 2.78vh 2.78vh 0.93vh;
+}
+
+.hud-ellipse.icon-circle-1, .hud-ellipse.icon-circle-2, .hud-ellipse.icon-circle-3 {
+  position: absolute;
+  width: 1.56vw;
+  height: 2.78vh;
+  right: 1.0vw;
+  background: linear-gradient(90deg, #7D128D 0%, #4E0F67 100%);
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.hud-ellipse.icon-circle-1 { top: 7.18vh; }
+.hud-ellipse.icon-circle-2 { top: 10.9vh; }
+.hud-ellipse.icon-circle-3 { top: 15.4vh; }
+
+.hud-icon.mask {
+  position: absolute;
+  width: 0.99vw;
+  height: 1.76vh;
+  right: 1.25vw;
+  top: 7.69vh;
+  background: url(assets/images/mask.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 4;
+}
+
+.hud-icon.wallet {
+  position: absolute;
+  width: 1.09vw;
+  height: 1.94vh;
+  right: 1.20vw;
+  top: 11.35vh;
+  background: url(assets/images/wallet.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 4;
+}
+
+.hud-icon.card {
+  position: absolute;
+  width: 0.94vw;
+  height: 1.67vh;
+  right: 1.25vw;
+  top: 15.9vh;
+  background: url(assets/images/card.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 4;
+}
+
+.hud-text.dynasty {
+  position: absolute;
+  width: 9.64vw;
+  height: 1.85vh;
+  left: 1.15vw;
+  top: 0.93vh;
+  font-family: 'Agency FB';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.07vw;
+  line-height: 2.31vh;
+  color: #C48DF8;
+  z-index: 3;
+}
+
+.hud-text.discord {
+  position: absolute;
+  width: 8.33vw;
+  height: 1.85vh;
+  left: 0.78vw;
+  top: 2.78vh;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.42vw;
+  line-height: 1.39vh;
+  color: #FFFFFF;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.hud-text.discord .discord-text,
+.hud-text.discord .tebex-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  opacity: 0;
+  transform: translateY(0.93vh);
+}
+
+.hud-text.discord .discord-text.active,
+.hud-text.discord .tebex-text.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hud-text.discord .tebex-text {
+  padding-left: 0.16vw;
+}
+
+@keyframes logoGlow {
+  0%, 90% {
+    transform: scale(1);
+    filter: drop-shadow(0px 0.21vw 0.21vw rgba(0, 0, 0, 0.25));
+  }
+  5%, 85% {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0px 0.31vw 0.62vw rgba(196, 141, 248, 0.4));
+  }
+  10%, 80% {
+    transform: scale(1.05) rotate(-3deg);
+    filter: drop-shadow(0px 0.21vw 0.42vw rgba(196, 141, 248, 0.3));
+  }
+  15%, 75% {
+    transform: scale(1.08) rotate(2deg);
+    filter: drop-shadow(0px 0.26vw 0.52vw rgba(196, 141, 248, 0.35));
+  }
+  20%, 70% {
+    transform: scale(1.02) rotate(-1deg);
+    filter: drop-shadow(0px 0.21vw 0.31vw rgba(196, 141, 248, 0.2));
+  }
+  25%, 65% {
+    transform: scale(1.06) rotate(1deg);
+    filter: drop-shadow(0px 0.21vw 0.42vw rgba(196, 141, 248, 0.25));
+  }
+  30%, 60% {
+    transform: scale(1.03) rotate(0deg);
+    filter: drop-shadow(0px 0.21vw 0.21vw rgba(0, 0, 0, 0.25));
+  }
+}
+
+.hud-image.logo {
+  position: absolute;
+  width: 4.11vw;
+  height: 7.31vh;
+  right: 0vw;
+  top: -0.93vh;
+  background: url(assets/images/image.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0px 0.21vw 0.21vw rgba(0, 0, 0, 0.25));
+  z-index: 10;
+  animation: logoGlow 15s ease-in-out infinite;
+}
+
+#speedometer {
+  position: absolute;
+  width: 138px;
+  height: 60px;
+  left: 890px;
+  top: 952px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: scale(0.7);
+  opacity: 0;
+  transition: none;
+}
+#speedometer.speedo-visible {
+  animation: speedo-bounce-in 0.45s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+#speedometer.speedo-hide {
+  animation: speedo-bounce-out 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+@keyframes speedo-bounce-in {
+  0% { transform: scale(0.7); opacity: 0; }
+  60% { transform: scale(1.08); opacity: 1; }
+  80% { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes speedo-bounce-out {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.7); opacity: 0; }
+}
+.speedo-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: linear-gradient(90deg, #fff 0%, #9742D0 100%);
+  opacity: 0.85;
+  will-change: transform, opacity;
+}
+
+#speedo-speed {
+  position: absolute;
+  width: 78px;
+  height: 60px;
+  left: -2px;
+  top: 0px;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 55px;
+  line-height: 65px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#speedo-gear {
+  position: absolute;
+  width: 7px;
+  height: 10px;
+  left: 129px;
+  top: 11px;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 12px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#speedo-kmh {
+  position: absolute;
+  width: 56px;
+  height: 15px;
+  left: 112px;
+  top: 35px;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 20px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#speedo-bar-bg {
+  position: absolute;
+  width: 138px;
+  height: 7px;
+  left: 0px;
+  top: 60px;
+  background: #3B343C;
+  border-radius: 0px 30px 30px 0px;
+}
+#speedo-bar {
+  position: absolute;
+  width: 0px;
+  height: 7px;
+  left: 0px;
+  top: 60px;
+  background: linear-gradient(90deg, #9742D0 0%, #796080 100%);
+  border-radius: 0px 30px 30px 0px;
+  transition: width 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+#speedo-fuel {
+  position: absolute;
+  width: 30px;
+  height: 15px;
+  left: 100px;
+  top: 15px;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 1366px) {
+  .hud-frame {
+    --hud-scale: 0.85;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hud-frame {
+    --hud-scale: 0.75;
+  }
+}
+
+@media (max-width: 768px) {
+  .hud-frame {
+    --hud-scale: 0.65;
+  }
+}
+
+@media (max-height: 768px) {
+  .hud-frame {
+    --hud-scale: 0.8;
+  }
+}
+
+@media (max-height: 600px) {
+  .hud-frame {
+    --hud-scale: 0.7;
+  }
+}
+
